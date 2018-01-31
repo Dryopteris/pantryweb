@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'/>
+    <title>Welcome to My Pantry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<h1>Welcome to My Pantry</h1>
+
+<button type="submit" onclick="UserAction()">Do the thing</button>
+<form action="UserAction()">
+    <input type="text" value="name"/>
+    <input type="submit" value="Greeting"/>
+</form>
+<form action="localhost:8080/ItemsOnHand">
+    <input type="submit" value="Items on Hand"/>
+</form>
+<form action="localhost:8080/Recipes">
+    <input type="submit" value="Recipes"/>
+</form>
+<form action="localhost:8080/Shopping List">
+    <input type="submit" value="Shopping List"/>
+</form>
+<form action="localhost:8080/Coupons">
+    <input type="submit" value="Coupons"/>
+</form>
+
+<script type="text/javascript">
+    function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/greeting", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
+    }
+
+function UserAction(name) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/greeting?name=" + name, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
+    }
+</script>
+
+<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
